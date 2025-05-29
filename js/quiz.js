@@ -137,7 +137,8 @@ nextBtn.addEventListener("click", () => {
       showQuestion();
       quizContainer.classList.add("slide-in-right");
     } else {
-      window.location.href = `result.html?score=${score}&total=${questions.length}`;
+      window.onbeforeunload = null;
+window.location.href = `result.html?score=${score}&total=${questions.length}`;
     }
 
     quizContainer.addEventListener("animationend", function handler2() {
