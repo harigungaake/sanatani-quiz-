@@ -23,15 +23,44 @@ header { position: relative; display: flex; justify-content: space-between; alig
 
 /* Quiz section and cards */ .quiz-section { margin: 1px auto 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 8fr)); gap: 7px; max-width: 700px; padding: 8px 2.6px; }
 
-.quiz-card { background: rgba(255, 255, 255, 0.8); border-radius: 15px; padding: 18px 0px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); transition: transform 0s ease, background 0s ease; cursor: pointer; }
+.quiz-card { background: rgba(255, 255, 255, 0.8); border-radius: 15px; padding: 18px 0px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); transition: transform 0.3s ease, background 0s ease; cursor: pointer; }
+.quiz-card.selected {
+  background-color: #ffe082;
+  border: 1.3px solid #f57c00;
+  transform: scale(1.07); 
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+  /* 👈 Add this line */
+}
 
-.quiz-card.selected { background-color: #ffe082; border: 1.3px solid #f57c00; }
+/* Start button */ .start-button { margin-top: 10px; padding: 15px 30px; font-size: 1rem; border: none; border-radius: 80px; background: linear-gradient(45deg, #f44336, #ff9800); color: white; cursor: pointer; box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); }
+#startBtn {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-.quiz-card:hover { transform: scale(1); }
+#startBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.start-button:hover {
+  animation: popIn 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
 
-/* Start button */ .start-button { margin-top: 10px; padding: 15px 30px; font-size: 1rem; border: none; border-radius: 80px; background: linear-gradient(45deg, #f44336, #ff9800); color: white; cursor: pointer; box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); transition: all 0.3s ease; display: none; }
-
-.start-button:hover { transform: scale(1); box-shadow: 3px 12px 25px rgba(0, 0, 0, 1); }
+@keyframes popIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* Container for the whole quiz */ #quiz-container { transition: transform 0.4s ease, opacity 0.4s ease; will-change: transform, opacity; }
 
@@ -55,7 +84,7 @@ header { position: relative; display: flex; justify-content: space-between; alig
 
 .sidebar.show { left: 0; }
 
-/* Feedback box */ #feedback { position: absolute; bottom: 46px; left: 60%; transform: translateX(-50%); background-color: rgba(255, 255, 255, 0.9); padding: 8px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; color: #3e2723; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); pointer-events: none; max-width: 90%; text-align: center; z-index: 1000; transition: opacity 0.3s ease; }
+/* Feedback box */ #feedback { position: absolute; bottom: 23px; left: 58%; transform: translateX(-50%); background-color: rgba(255, 255, 255, 0.9); padding: 8px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; color: #3e2723; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); pointer-events: none; max-width: 90%; text-align: center; z-index: 1000; transition: opacity 0.3s ease; }
 
 /* === Question Text Styling === */ #question { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: bold; color: #3e2723; margin-bottom: 15px; text-align: center; }
 
@@ -103,4 +132,25 @@ header { position: relative; display: flex; justify-content: space-between; alig
 @keyframes shake { 0% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-10px); } 80% { transform: translateX(10px); } 100% { transform: translateX(0); } }
 
 .shake { animation: shake 0.5s; }
+@keyframes popInFadeOut {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
 
+.pop-in-fade-out {
+  animation: popInFadeOut 1.5s forwards ease;
+}
