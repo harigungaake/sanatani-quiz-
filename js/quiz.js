@@ -120,7 +120,8 @@ function showFeedback(isCorrect) {
   feedbackDiv.style.fontSize = "15px";
   feedbackDiv.style.fontWeight = "bold";
   feedbackDiv.style.textAlign = "center";
-  feedbackDiv.style.marginTop = "30px";
+  feedbackDiv.style.marginTop = "10px";
+  feedbackDiv.style.marginLeft = "-150px";
   feedbackDiv.classList.add("feedback-animate");
 }
 
