@@ -2,6 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Result</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
@@ -14,16 +15,17 @@
       height: 100vh;
       margin: 0;
       overflow-x: hidden;
+      padding: 20px;
     }
 
     .result-container {
       background-color: #fff8dc;
-      padding: 30px;
+      padding: 25px 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       text-align: center;
-      max-width: 320px;
       width: 100%;
+      max-width: 400px;
       animation: fadeIn 1s ease-in;
       position: relative;
       z-index: 10;
@@ -35,13 +37,13 @@
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 24px;
       color: #4e342e;
       margin-bottom: 10px;
     }
 
     .score {
-      font-size: 28px;
+      font-size: 26px;
       margin: 15px 0;
       color: #2e7d32;
       font-weight: bold;
@@ -93,6 +95,18 @@
       z-index: 5;
     }
 
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 22px;
+      }
+      .score {
+        font-size: 24px;
+      }
+      .btn {
+        width: 100%;
+        font-size: 15px;
+      }
+    }
 
   </style>
 </head>
@@ -103,7 +117,7 @@
     <h1>परिणाम</h1>
     <div class="score" id="scoreText">Loading...</div>
     <div class="message" id="resultMessage"></div>
-    <button class="btn" onclick="goBack()">फिर से खेलें</button><br/>
+    <button class="btn" onclick="goBack()">फिर से खेलें</button>
     <div class="hint">क्या आप इस बार अपना स्कोर बेहतर कर सकते हैं?</div>
   </div>
 
