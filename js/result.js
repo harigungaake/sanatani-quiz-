@@ -38,9 +38,9 @@ if (score === total) {
 
 // Play again button
 function goBack() {
-  // Pichle page par wapas bhejne ke liye
-  window.history.back(); // ya window.history.go(-1);
+  window.location.href = "index.html";
 }
+
 
 // Confetti animation (simple and lightweight)
 function startConfetti() {
