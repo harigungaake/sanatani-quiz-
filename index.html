@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hari Gun Gaake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header><!-- Menu Drawer -->
+<nav class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="about.html">About Us</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+<li><a href="https://www.instagram.com/hari_gun_gaake/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a></li>
+<li><a href="https://youtube.com/@HariGunGaake" target="_blank">YouTube</a></li>
+  </ul>
+</nav>
+    <div class="menu">☰</div>
+    <div class="logo">
+      <img src="./assets/images/log.png" alt="Hari Gun Gaake Logo">
+      <div class="logo-text">Hari Gun Gaake</div>
+      <div class="tagline">Sanatani Quiz</div>
+    </div> <div class="options">⋮</div>
+  </header>
+  <div class="main-content">
+    <h2>Quiz Category</h2>
+    <div class="quiz-section">
+      <div class="quiz-card" onclick="toggleCategory(this, 'ramayan')">रामायण</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'bhagavadgita')">श्रीमद्भगवद्गीता</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'hanumanchalisa')">हनुमान चालीसा</div>
+       <div class="quiz-card" onclick="toggleCategory(this, 'bhagavatmaha')">भागवत महापुराण</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'vishnupuran')">विष्णु पुराण</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'shivpuran')">शिव पुराण</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'durgasaptshati')">दुर्गा सप्तशती</div>
+      <div class="quiz-card" onclick="toggleCategory(this, 'manusmriti')">मनुस्मृति</div>
+    </div>
+    <button class="start-button" id="startBtn" onclick="startQuiz()">Start Quiz</button>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+<footer class="footer-note">
+  <p>&copy; 2025 HARI GUN GAAKE | All Rights Reserved.</p>
+  <p>Developed & Owned By Shashank Kumar Tiwari.</p>
+</footer>

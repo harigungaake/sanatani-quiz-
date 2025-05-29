@@ -1,0 +1,15 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node modules if ever used
+node_modules/
+
+# Ignore build folders if any
+dist/
+build/
+
+# Ignore logs
+*.log
+
+# Ignore zip files
+*.zip
