@@ -2,22 +2,30 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>प्रश्नोत्तरी</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f7f4ea;
       padding: 20px;
+      margin: 0;
+      overflow-x: hidden;
     }
 
     #quiz-container {
       max-width: 800px;
+      width: 100%;
       margin: auto;
       background-color: #fff8dc;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      padding: 40px 30px;
+      padding: 30px 20px;
     }
 
     #question {
@@ -31,7 +39,7 @@
       width: 100%;
       margin: 8px 0;
       padding: 12px;
-      background-color: #ffff;
+      background-color: #ffffff;
       border: 1px solid #ccc;
       border-radius: 100px;
       font-size: 16px;
@@ -40,7 +48,7 @@
     }
 
     #options button:hover {
-      background-color: #ffff;
+      background-color: #f0f0f0;
     }
 
     #nextBtn {
@@ -57,18 +65,43 @@
     #nextBtn:hover {
       background-color: #e6b800;
     }
+
+    #progress {
+      font-weight: bold;
+      text-align: right;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      #quiz-container {
+        padding: 20px 15px;
+      }
+
+      #question {
+        font-size: 15px;
+      }
+
+      #options button {
+        font-size: 15px;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
-<body><div id="quiz-container">  
-  <div id="question-wrapper">
-  <div id="progress" style="font-weight:bold; margin-left:206px; font-size:11px; color:#555;"></div>
-  <div id="question">Loading question...</div>  
-  <div id="options"></div>  
-</div>
-  <button id="nextBtn">अगला प्रश्न</button>  
-</div>
+<body>
 
+  <div id="quiz-container">  
+    <div id="question-wrapper">
+      <div id="progress"></div>
+      <div id="question">Loading question...</div>  
+      <div id="options"></div>  
+    </div>
+    <button id="nextBtn">अगला प्रश्न</button>  
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="js/quiz.js"></script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
