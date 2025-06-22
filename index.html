@@ -7,29 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* Sidebar user info styling */
-    .user-info {
-      padding: 15px;
-      background-color: #f0f0f0;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      font-family: 'Rajdhani', sans-serif;
-      color: #333;
-    }
-    .user-info p {
-      margin: 4px 0;
-      font-weight: 600;
-    }
-  </style>
 </head>
 <body>
   <header>
     <!-- Menu Drawer -->
     <nav class="sidebar" id="sidebar">
       <div class="user-info">
-        <p id="userName">Loading...</p>
-        <p id="userId"></p>
+        <p>Hari Gun Gaake</p>
       </div>
       <ul>
         <li><a href="https://www.instagram.com/hari_gun_gaake/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a></li>
@@ -48,10 +32,8 @@
       <div class="tagline">Sanatani Quiz</div>
     </div>
 
-    <div class="options">
-      ⋮
-      <div id="logoutBtn">Logout</div>
-    </div>
+    <div class="options" id="optionsBtn">⋮    
+  </div>
   </header>
 
   <div class="main-content">
@@ -76,45 +58,13 @@
   </footer>
 
   <script src="js/main.js"></script>
-
-  <script type="module">
-    import { auth, onAuthStateChanged } from './js/firebase.js';
-    import { signOut } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
-
-    // Elements
-    const optionsDiv = document.querySelector('.options');
+  <script>
+    // Only toggling "Coming Soon" box when ⋮ is clicked
+    const optionsBtn = document.getElementById('optionsBtn');
     const logoutBtn = document.getElementById('logoutBtn');
-    logoutBtn.style.display = 'none';
 
-    const userNameEl = document.getElementById('userName');
-    const userIdEl = document.getElementById('userId');
-
-    // Login check and show user info
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Show name and UID in sidebar
-        userNameEl.textContent = `Name : ${user.displayName || 'Unknown'}`;
-        userIdEl.textContent = `User ID: ${user.uid}`;
-      } else {
-        window.location.href = 'login.html';
-      }
-    });
-
-    // Toggle logout button visibility
-    optionsDiv.addEventListener('click', () => {
+    optionsBtn.addEventListener('click', () => {
       logoutBtn.style.display = logoutBtn.style.display === 'none' ? 'block' : 'none';
-    });
-
-    // Logout function with alert before redirect
-    logoutBtn.addEventListener('click', () => {
-      signOut(auth)
-        .then(() => {
-          alert('आप सफलतापूर्वक लॉग आउट हो गए हैं।');
-          window.location.href = 'login.html';
-        })
-        .catch((error) => {
-          alert('Logout Error: ' + error.message);
-        });
     });
   </script>
 </body>
