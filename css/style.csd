@@ -1,0 +1,165 @@
+@font-face { font-family: 'WaltographUI'; src: url('../assets/fonts/waltographUI.ttf') format('truetype'); }
+
+body { height: 100vh; background-image: url('../assets/images/background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow-x: hidden;
+  padding-bottom: 50px; /* footer ki height ke hisaab se */
+}
+
+header { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 15px; color: #3e2723; }
+
+.logo { text-align: center; margin-top: -18px;  }
+
+.logo img { height: 50px; width: 50px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 5px; opacity: 1; }
+
+.logo-text { font-size: 1.8rem; font-weight: bold; font-family: 'WaltographUI', cursive; margin-top: -4px; }
+
+.tagline { font-family: 'Marck Script', cursive; font-size: 1.3rem; text-align: center; text-transform: none; color: #4e342e; margin-top: 8px; }
+
+.menu, .options { font-size: 1.2rem; cursor: pointer; margin-top: -60px; }
+
+.main-content { margin-top: 100px; text-align: center; color: #4e342e; }
+
+/* Quiz section and cards */ .quiz-section { margin: 1px auto 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 8fr)); gap: 7px; max-width: 700px; padding: 8px 2.6px; }
+
+.quiz-card { background: rgba(255, 255, 255, 0.8); border-radius: 15px; padding: 18px 0px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); transition: transform 0.3s ease, background 0s ease; cursor: pointer; }
+.quiz-card.selected {
+  background-color: #ffe082;
+  border: 1.3px solid #f57c00;
+  transform: scale(1.07); 
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+  /* 👈 Add this line */
+}
+
+/* Start button */ .start-button { margin-top: 10px; padding: 15px 30px; font-size: 1rem; border: none; border-radius: 80px; background: linear-gradient(45deg, #f44336, #ff9800); color: white; cursor: pointer; box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5); }
+#startBtn {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#startBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.start-button:hover {
+  animation: popIn 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Container for the whole quiz */ #quiz-container { transition: transform 0.4s ease, opacity 0.4s ease; will-change: transform, opacity; }
+
+/* Remove transition from wrapper since it's moved to container */ #question-wrapper { transition: none; will-change: auto; }
+
+/* Animation classes */ .slide-out-left { animation: slideOutLeft 0.4s forwards ease; }
+
+.slide-in-right { animation: slideInRight 0.4s forwards ease; }
+
+@keyframes slideOutLeft { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(-100%); opacity: 0; } }
+
+@keyframes slideInRight { 0% { transform: translateX(100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+
+/* Sidebar */ .sidebar { position: fixed; top: 0; left: -250px; width: 220px; height: 100%; background-color: rgba(255, 255, 255, 1); box-shadow: 2px 0 5px rgba(0, 0, 0, 0.6); padding-top: 60px; transition: left 0.3s ease-in-out; z-index: 999; }
+
+.sidebar ul { list-style-type: none; padding: 0; }
+
+.sidebar ul li { padding: 15px 20px; border-bottom: 1px solid #ccc; }
+
+.sidebar ul li a { text-decoration: none; color: #3e2723; font-weight: bold; font-size: 1rem; display: block; }
+
+.sidebar.show { left: 0; }
+
+/* Feedback box */ #feedback { position: absolute; bottom: 23px; left: 58%; transform: translateX(-50%); background-color: rgba(255, 255, 255, 0.9); padding: 8px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; color: #3e2723; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); pointer-events: none; max-width: 90%; text-align: center; z-index: 1000; transition: opacity 0.3s ease; }
+
+/* === Question Text Styling === */ #question { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: bold; color: #3e2723; margin-bottom: 15px; text-align: center; }
+
+/* === Option Buttons Styling === */ #options button { font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 200; background-color: #fff; border: 2px solid #4e342e; padding: 10px 12px; margin: 6px 0; width: 100%; border-radius: 12px; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; color: #4e342e; }
+
+#options button:hover:not(:disabled) { background-color: #ffe082; color: #3e2723; }
+
+#options button:disabled { cursor: default; opacity: 1; }
+
+/* Responsive adjustments */ @media (max-width: 600px) { .quiz-section { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+
+.quiz-card { width: 100%; } }
+
+@keyframes popOutFadeOut { 0% { opacity: 0; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1.1); } 70% { transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+
+.feedback-animate { animation: popOutFadeOut 2s forwards; }
+
+.correct-answer { background-color: #4caf50 !important; border-color: #388e3c; animation: fadeInHighlight 0.4s ease forwards; }
+
+.wrong-answer { background-color: #f44336 !important; border-color: #d32f2f; animation: fadeInHighlight 0.4s ease forwards; }
+
+@keyframes fadeInHighlight { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+
+.footer-note {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f0e6;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  color: #4e342e;
+  border-top: 1px solid #ddd;
+}
+.footer-note p {
+  margin: 3px 0;
+}
+
+@keyframes popIn { 0% { transform: scale(0.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+.pop-in { animation: popIn 0.4s ease-out; }
+
+@keyframes shake { 0% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(10px); } 60% { transform: translateX(-10px); } 80% { transform: translateX(10px); } 100% { transform: translateX(0); } }
+
+.shake { animation: shake 0.5s; }
+@keyframes popInFadeOut {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.pop-in-fade-out {
+  animation: popInFadeOut 1.5s forwards ease;
+}
+    .user-info p {
+      margin: 4px 0;
+      font-weight: 600;
+    }
+    
+     .user-info {
+      padding: 15px;
+      background-color: #f0f0f0;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      color: #333;
+     }
