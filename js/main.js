@@ -13,17 +13,11 @@ function toggleCategory(card, category) {
   selectedCategory = '';
 
   if (!wasSelected) {
-    // Select new category
     card.classList.add('selected');
     selectedCategory = category;
-
-    // Show start button
     startBtn.classList.add('visible');
-
-    // Clear any previous message
     message.textContent = '';
   } else {
-    // Hide start button if deselected
     startBtn.classList.remove('visible');
   }
 }
@@ -31,9 +25,8 @@ function toggleCategory(card, category) {
 // === Start quiz based on selected category ===
 function startQuiz() {
   if (selectedCategory) {
-    // Redirect to quiz page with category in URL
     window.location.href = `quiz.html?category=${selectedCategory}`;
-  } 
+  }
 }
 
 // === Hamburger menu toggle for sidebar ===
@@ -41,12 +34,25 @@ document.querySelector('.menu').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('show');
 });
 
-// === Hide sidebar when clicking outside ===
+// === Options menu toggle (⋮ for logout) ===
+const optionsDiv = document.querySelector('.options');
+const logoutBtn = document.getElementById('logoutBtn');
+
+optionsDiv.addEventListener('click', (event) => {
+  event.stopPropagation();
+  logoutBtn.classList.toggle('show');
+});
+
+// === Hide sidebar and logout button when clicking outside ===
 document.addEventListener('click', function(event) {
   const sidebar = document.getElementById('sidebar');
   const menu = document.querySelector('.menu');
 
   if (!sidebar.contains(event.target) && !menu.contains(event.target)) {
     sidebar.classList.remove('show');
+  }
+
+  if (!optionsDiv.contains(event.target) && !logoutBtn.contains(event.target)) {
+    logoutBtn.classList.remove('show');
   }
 });
