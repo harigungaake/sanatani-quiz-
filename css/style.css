@@ -1,15 +1,12 @@
 @font-face { font-family: 'WaltographUI'; src: url('../assets/fonts/waltographUI.ttf') format('truetype'); }
 
-/* Global Reset */
+body { height: 100vh; background-image: url('../assets/images/background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow-x: hidden;
+  padding-bottom: 50px; /* footer ki height ke hisaab se */
+}
 
-{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+header { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 15px; color: #3e2723; }
 
-
-body { height: 100vh; background-image: url('../assets/images/background.jpg'); background-size: cover; background-position: center; background-repeat: repeat; overflow-x: hidden; }
-
-header { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 20px; color: #3e2723; }
-
-.logo { text-align: center; margin-top: -18px; margin-bottom: 10px; }
+.logo { text-align: center; margin-top: -18px;  }
 
 .logo img { height: 50px; width: 50px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 5px; opacity: 1; }
 
@@ -109,20 +106,19 @@ header { position: relative; display: flex; justify-content: space-between; alig
 @keyframes fadeInHighlight { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
 
 .footer-note {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: #f5f0e6;
   text-align: center;
-  padding: 8px 10px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #4e342e;
   border-top: 1px solid #ddd;
-  position: relative;
-  bottom: 0;
-  width: 99%;
-  margin-top: 80px;
-
-  /* 👇 Add this line */
-  transform: translateX(-10px); /* Left mein shift karega */
+}
+.footer-note p {
+  margin: 3px 0;
 }
 
 @keyframes popIn { 0% { transform: scale(0.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -153,4 +149,42 @@ header { position: relative; display: flex; justify-content: space-between; alig
 
 .pop-in-fade-out {
   animation: popInFadeOut 1.5s forwards ease;
+}
+/* === Logout Button Styling === */
+#logoutBtn {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff7043, #f44336);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1001;
+  display: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+#logoutBtn.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover effect for logout */
+#logoutBtn:hover {
+  background: linear-gradient(135deg, #e53935, #d32f2f);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+#userId {
+  font-size: 0.60rem;  /* ya jo size chahiye wo set kar sakte hain */
+  color: #555;         /* thoda halka grey color bhi kar sakte hain */
 }
